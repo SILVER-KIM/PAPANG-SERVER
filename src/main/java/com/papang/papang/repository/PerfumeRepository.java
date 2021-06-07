@@ -13,10 +13,10 @@ import java.util.Optional;
 public interface PerfumeRepository extends JpaRepository<Perfume, Integer> {
 
 
-    @Query("SELECT d FROM Perfume d " +
+    @Query("SELECT d.perfumeID, d.name, d.brand FROM Perfume d " +
             "WHERE d.concentration = :concentration AND d.size between :size1 AND :size2 " +
             "AND d.style = :style AND d.main = :main AND d.first = :first AND d.second = :second")
-    ArrayList<Perfume> findByRecommendationPerfume(int concentration, int size1, int size2, int style,
+    ArrayList<String> findByRecommendationPerfume(int concentration, int size1, int size2, int style,
                                                    int main, int first, int second);
 
     @Query("select p from Perfume p where p.name = :name")

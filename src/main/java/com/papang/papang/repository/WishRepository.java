@@ -13,11 +13,11 @@ public interface WishRepository extends JpaRepository<Wish, String> {
     @Query("SELECT w FROM Wish w WHERE w.email = :email")
     List<Wish> getWishList(String email);
 
-    @Query("SELECT w FROM Wish w WHERE w.email = :email AND w.name = :name")
-    Wish getWishPerfume(String email, String name);
+    @Query("SELECT w FROM Wish w WHERE w.email = :email AND w.brand = :brand AND w.name = :name")
+    Wish getWishPerfume(String email, String brand, String name);
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Wish w WHERE w.email = :email AND w.name = :name")
-    int deleteWishPerfume(String email, String name);
+    @Query("DELETE FROM Wish w WHERE w.email = :email AND w.brand = :brand AND w.name = :name")
+    int deleteWishPerfume(String email, String brand, String name);
 }

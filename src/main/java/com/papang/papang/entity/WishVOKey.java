@@ -4,5 +4,6 @@ import java.io.Serializable;
 
 public class WishVOKey implements Serializable {
     String email;
-    int perfumeID;
+    String brand;
+    String name;
 }

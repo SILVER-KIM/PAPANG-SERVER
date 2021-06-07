@@ -22,22 +22,22 @@ public class WishCotroller {
         return w_repo.getWishList(email);
     }
 
-    @GetMapping(value = "/{email}/{name}", produces = "application/json; charset=utf-8")
-    public Wish getWishList(@PathVariable("email") String email,
+    @GetMapping(value = "/{email}/{brand}/{name}", produces = "application/json; charset=utf-8")
+    public Wish getWishList(@PathVariable("email") String email, @PathVariable("brand") String brand,
                                   @PathVariable("name") String name)
     {
-        return w_repo.getWishPerfume(email, name);
+        return w_repo.getWishPerfume(email, brand, name);
     }
 
     @PostMapping("/add")
     public Wish addWish(@RequestBody Map<String, String> map){
-        return w_repo.save(new Wish(map.get("email"), Integer.parseInt(map.get("perfumeID")),
-                map.get("brand"), map.get("name")));
+        return w_repo.save(new Wish(map.get("email"), map.get("brand"), map.get("name")));
     }
 
-    @PostMapping("/delete/{email}/{name}")
-    public int deleteWish(@PathVariable("email") String email, @PathVariable("name") String name){
-        w_repo.deleteWishPerfume(email, name);
+    @PostMapping("/delete/{email}/{brand}/{name}")
+    public int deleteWish(@PathVariable("email") String email, @PathVariable("brand") String brand
+            , @PathVariable("name") String name){
+        w_repo.deleteWishPerfume(email, brand, name);
         return 1004;
     }
 

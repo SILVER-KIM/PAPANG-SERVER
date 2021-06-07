@@ -18,7 +18,7 @@ public class RecommendationController {
     PerfumeRepository p_repo;
 
     @GetMapping(value = "/{concentration}/{size1}/{size2}/{style}/{main}/{first}/{second}", produces = "application/json; charset=utf-8")
-    public ArrayList<Perfume> getPerfumeRecommendation2(@PathVariable("concentration") int concentration,
+    public ArrayList<String> getPerfumeRecommendation2(@PathVariable("concentration") int concentration,
                                                         @PathVariable("size1") int size1, @PathVariable("size2") int size2,
                                                         @PathVariable("style") int style, @PathVariable("main") int main,
                                                         @PathVariable("first") int first, @PathVariable("second") int second){

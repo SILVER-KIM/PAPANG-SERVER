@@ -22,7 +22,7 @@ public class PerfumeController {
     }
 
     @GetMapping(value = "/find/{perfumeID}", produces = "application/json; charset=utf-8")
-    public Perfume getPerfumeOne(@PathVariable("perfumeID") int perfumeID){
+    public Perfume findPerfume(@PathVariable("perfumeID") int perfumeID){
         return p_repo.findById(perfumeID).orElse(null);
     }
 

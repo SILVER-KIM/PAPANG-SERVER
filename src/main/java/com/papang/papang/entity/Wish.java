@@ -18,21 +18,15 @@ public class Wish implements Serializable {
     String email;
 
     @Id
-    @Column(name="perfumeID", nullable = false)
-    int perfumeID;
-
-    @Column(name="brand")
+    @Column(name="brand", nullable = false)
     String brand;
 
-    @Column(name="name")
+    @Id
+    @Column(name="name", nullable = false)
     String name;
 
     public String getEmail(){
         return this.email;
-    }
-
-    public int getPerfumeID(){
-        return this.perfumeID;
     }
 
     public String getBrand(){
@@ -43,9 +37,8 @@ public class Wish implements Serializable {
         return this.name;
     }
 
-    public Wish(String email, int perfumeID, String brand, String name){
+    public Wish(String email, String brand, String name){
         this.email = email;
-        this.perfumeID = perfumeID;
         this.brand = brand;
         this.name = name;
     }
