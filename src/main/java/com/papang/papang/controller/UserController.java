@@ -42,4 +42,10 @@ public class UserController {
         return u_repo.getEmail(phone);
     }
 
+    @PostMapping("/delete/{email}")
+    public int deleteWish(@PathVariable("email") String email){
+        u_repo.deleteUser(email);
+        return 1004;
+    }
+
 }
