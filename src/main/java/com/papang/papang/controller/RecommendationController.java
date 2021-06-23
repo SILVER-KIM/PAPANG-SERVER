@@ -25,4 +25,13 @@ public class RecommendationController {
         return p_repo.findByRecommendationPerfume(concentration, size1, size2, style, main, first, second);
     }
 
+    @GetMapping(value = "/{concentration}/{size1}/{size2}/{style}/{main}/{first}", produces = "application/json; charset=utf-8")
+    public ArrayList<String> getPerfumeRecommendation3(@PathVariable("concentration") int concentration,
+                                                       @PathVariable("size1") int size1, @PathVariable("size2") int size2,
+                                                       @PathVariable("style") int style, @PathVariable("main") int main,
+                                                       @PathVariable("first") int first){
+
+        return p_repo.findByRecommendationPerfumeExclude(concentration, size1, size2, style, main, first);
+    }
+
 }
