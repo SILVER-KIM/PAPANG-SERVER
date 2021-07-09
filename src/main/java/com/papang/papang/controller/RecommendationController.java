@@ -17,21 +17,19 @@ public class RecommendationController {
     @Autowired
     PerfumeRepository p_repo;
 
-    @GetMapping(value = "/{concentration}/{size1}/{size2}/{style}/{main}/{first}/{second}", produces = "application/json; charset=utf-8")
-    public ArrayList<String> getPerfumeRecommendation2(@PathVariable("concentration") int concentration,
-                                                        @PathVariable("size1") int size1, @PathVariable("size2") int size2,
-                                                        @PathVariable("style") int style, @PathVariable("main") int main,
-                                                        @PathVariable("first") int first, @PathVariable("second") int second){
-        return p_repo.findByRecommendationPerfume(concentration, size1, size2, style, main, first, second);
+    @GetMapping(value = "/{style}/{main}/{first}/{second}/{size1}/{size2}", produces = "application/json; charset=utf-8")
+    public ArrayList<String> getPerfumeRecommendation2(@PathVariable("style") int style, @PathVariable("main") int main,
+                                                       @PathVariable("first") int first, @PathVariable("second") int second,
+                                                       @PathVariable("size1") int size1, @PathVariable("size2") int size2){
+        return p_repo.findByRecommendationPerfume(style, main, first, second, size1, size2);
     }
 
-    @GetMapping(value = "/{concentration}/{size1}/{size2}/{style}/{main}/{first}", produces = "application/json; charset=utf-8")
-    public ArrayList<String> getPerfumeRecommendation3(@PathVariable("concentration") int concentration,
-                                                       @PathVariable("size1") int size1, @PathVariable("size2") int size2,
-                                                       @PathVariable("style") int style, @PathVariable("main") int main,
-                                                       @PathVariable("first") int first){
+    @GetMapping(value = "/{style}/{main}/{first}/{size1}/{size2}", produces = "application/json; charset=utf-8")
+    public ArrayList<String> getPerfumeRecommendation3(@PathVariable("style") int style, @PathVariable("main") int main,
+                                                       @PathVariable("first") int first, @PathVariable("size1") int size1,
+                                                       @PathVariable("size2") int size2){
 
-        return p_repo.findByRecommendationPerfumeExclude(concentration, size1, size2, style, main, first);
+        return p_repo.findByRecommendationPerfumeExclude(style, main, first, size1, size2);
     }
 
 }

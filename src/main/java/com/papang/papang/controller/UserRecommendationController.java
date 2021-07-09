@@ -25,21 +25,20 @@ public class UserRecommendationController {
 
     @PostMapping("/save")
     public UserRecommendation addWish(@RequestBody Map<String, String> map){
-        return ur_repo.save(new UserRecommendation(map.get("email"), map.get("concentration"),
-                map.get("size"), Integer.parseInt(map.get("style")),
-                Integer.parseInt(map.get("flavor1")), Integer.parseInt(map.get("flavor2")),
-                Integer.parseInt(map.get("flavor3"))));
+        return ur_repo.save(new UserRecommendation(map.get("email"),
+                Integer.parseInt(map.get("style")), Integer.parseInt(map.get("flavor1")),
+                Integer.parseInt(map.get("flavor2")), Integer.parseInt(map.get("flavor3")),
+                map.get("size")));
     }
 
     @PostMapping("/change_save/{email}")
     public UserRecommendation addWish(@PathVariable("email") String email, @RequestBody Map<String, String> map){
         UserRecommendation ur = ur_repo.findById(email).orElse(null);
-        ur.setConcentration(map.get("concentration"));
-        ur.setSize(map.get("size"));
         ur.setStyle(Integer.parseInt(map.get("style")));
         ur.setFlavor1(Integer.parseInt(map.get("flavor1")));
         ur.setFlavor2(Integer.parseInt(map.get("flavor2")));
         ur.setFlavor3(Integer.parseInt(map.get("flavor3")));
+        ur.setSize(map.get("size"));
         return ur_repo.save(ur);
     }
 }
