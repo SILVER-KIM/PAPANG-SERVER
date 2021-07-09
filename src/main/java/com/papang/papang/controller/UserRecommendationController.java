@@ -24,7 +24,7 @@ public class UserRecommendationController {
     }
 
     @PostMapping("/save")
-    public UserRecommendation addWish(@RequestBody Map<String, String> map){
+    public UserRecommendation addRecommendation(@RequestBody Map<String, String> map){
         return ur_repo.save(new UserRecommendation(map.get("email"),
                 Integer.parseInt(map.get("style")), Integer.parseInt(map.get("flavor1")),
                 Integer.parseInt(map.get("flavor2")), Integer.parseInt(map.get("flavor3")),
@@ -32,7 +32,7 @@ public class UserRecommendationController {
     }
 
     @PostMapping("/change_save/{email}")
-    public UserRecommendation addWish(@PathVariable("email") String email, @RequestBody Map<String, String> map){
+    public UserRecommendation changeRecommendation(@PathVariable("email") String email, @RequestBody Map<String, String> map){
         UserRecommendation ur = ur_repo.findById(email).orElse(null);
         ur.setStyle(Integer.parseInt(map.get("style")));
         ur.setFlavor1(Integer.parseInt(map.get("flavor1")));
