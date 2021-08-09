@@ -27,9 +27,6 @@ public class UserRecommendation {
     @Column(name="flavor2", nullable = false)
     int flavor2;
 
-    @Column(name="flavor3", nullable = false)
-    int flavor3;
-
     @Column(name="size", nullable = false)
     String size;
 
@@ -69,20 +66,11 @@ public class UserRecommendation {
         this.flavor2 = flavor2;
     }
 
-    public int getFlavor3() {
-        return flavor3;
-    }
-
-    public void setFlavor3(int flavor3) {
-        this.flavor3 = flavor3;
-    }
-
-    public UserRecommendation(String email, int style, int flavor1, int flavor2, int flavor3, String size){
+    public UserRecommendation(String email, int style, int flavor1, int flavor2, String size){
         this.email = email;
         this.style = style;
         this.flavor1 = flavor1;
         this.flavor2 = flavor2;
-        this.flavor3 = flavor3;
         this.size = size;
     }
 }

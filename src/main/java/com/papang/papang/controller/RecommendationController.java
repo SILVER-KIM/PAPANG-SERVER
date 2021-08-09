@@ -27,9 +27,11 @@ public class RecommendationController {
     @GetMapping(value = "/{style}/{main}/{first}/{size1}/{size2}", produces = "application/json; charset=utf-8")
     public ArrayList<String> getPerfumeRecommendation3(@PathVariable("style") int style, @PathVariable("main") int main,
                                                        @PathVariable("first") int first, @PathVariable("size1") int size1,
-                                                       @PathVariable("size2") int size2){
+                                                       @PathVariable("size2") int size2) {
 
-        return p_repo.findByRecommendationPerfumeExclude(style, main, first, size1, size2);
+        return p_repo.findByRecommendationPerfumeExclude2(style, main, first, size1, size2);
     }
+
+
 
 }
